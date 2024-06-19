@@ -77,15 +77,29 @@ pip install heapq
 ```
 
 - Execute the Python Program using the IDE
-
+```
+python campus_navigation.py
+```
+  
+- Using the Application
+  - Enter the Source Point in the provided input field.
+  - Enter the Destination Point in the provided input field.
+  - Click the Find Shortest Path button.
+  - The application will display the shortest path on the map with a red line, and the points will be shown in chronological order. The calculated distance will also be displayed.
 ---
 
 ## Graphical User Interface
 
-!\[GUI\](https://github.com/DilmyPerera/Efficient-Campus-Navigation/assets/113934417/7e831112-712f-49bd-93cb-cf1462a44394)
+![GUI](https://github.com/DilmyPerera/Efficient-Campus-Navigation/assets/113934417/7e831112-712f-49bd-93cb-cf1462a44394)
+
+**After Execution**
+
+![Gui After](https://github.com/DilmyPerera/Efficient-Campus-Navigation/assets/113934417/dd64f7c0-ff72-40cb-9757-ad9d00d68b5e)
+
+
 
 ## **Conclusion**
 
 The Efficient Campus Navigation system for the University of Vavuniya provides a significant improvement in navigating the campus. By combining traditional pathfinding algorithms , this system offers reliable and adaptive navigation solutions. It enhances the campus experience by making navigation more intuitive, efficient, and responsive to real-time conditions. Future enhancements could include expanded datasets, additional machine learning models, and further integration with campus infrastructure
 
-For more Details view Project Report here
+For more Details view Project Report [here](https://github.com/user-attachments/files/15905066/Report.pdf)
