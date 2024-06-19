@@ -204,3 +204,4 @@ image = ImageTk.PhotoImage(image)
 # Draw the initial map with the image background
 draw_map([])
 
+root.mainloop()
