@@ -111,3 +111,40 @@ def handle_find_path():
     else:
         result_label.config(text="No path found between these buildings.")
         draw_map([])
+
+def draw_map(shortest_path):
+    canvas.delete("all")  # Clear previous drawings
+    canvas.create_image(0, 0, image=image, anchor='nw')
+
+    # Draw all paths between buildings in gray
+    for building, data in campus_map.items():
+        x1, y1 = data['x'], data['y']
+        for neighbor, distance in data.items():
+            if neighbor not in ['x', 'y']:
+                x2, y2 = campus_map[neighbor]['x'], campus_map[neighbor]['y']
+                canvas.create_line(x1, y1, x2, y2, fill="gray")
+
+                # Add distance labels to each path
+                mid_x, mid_y = (x1 + x2) // 2, (y1 + y2) // 2
+                angle = math.atan2(y2 - y1, x2 - x1)
+                offset_x = 10 * math.sin(angle)
+                offset_y = 10 * math.cos(angle)
+                #canvas.create_text(mid_x + offset_x, mid_y - offset_y, text=str(distance), font=("Arial", 8),
+                #fill="gray")
+
+    # Draw the shortest path in red
+    if len(shortest_path) > 1:
+        for i in range(len(shortest_path) - 1):
+            building1 = shortest_path[i]
+            building2 = shortest_path[i + 1]
+            x1, y1 = campus_map[building1]['x'], campus_map[building1]['y']
+            x2, y2 = campus_map[building2]['x'], campus_map[building2]['y']
+            canvas.create_line(x1, y1, x2, y2, fill="red", width=4)
+
+            # Add distance labels to the red paths
+            distance = campus_map[building1][building2]
+            mid_x, mid_y = (x1 + x2) // 2, (y1 + y2) // 2
+            angle = math.atan2(y2 - y1, x2 - x1)
+            offset_x = 10 * math.sin(angle)
+            offset_y = 10 * math.cos(angle)
+            #canvas.create_text(mid_x + offset_x, mid_y - offset_y, text=str(distance), font=("Arial", 8), fill="red")        
