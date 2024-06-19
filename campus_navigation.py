@@ -1,4 +1,8 @@
+import tkinter as tk
 import heapq
+import math  #For calculating positions on the canvas
+from PIL import Image, ImageTk
+
 
 
 
@@ -159,4 +163,34 @@ def draw_map(shortest_path):
         else:
             # Regular buildings
             canvas.create_oval(x - 1, y - 1, x + 1, y + 1, fill="black", outline="black")
-            canvas.create_text(x, y - 15, text=building, font=("Arial", 7), fill="white")        
+            canvas.create_text(x, y - 15, text=building, font=("Arial", 7), fill="white")    
+            
+
+root = tk.Tk()
+root.title("University Path Finder")
+
+# Set the window to fullscreen
+root.state("zoomed")
+
+# Create a frame for the left side controls
+control_frame = tk.Frame(root)
+control_frame.pack(side=tk.LEFT, fill=tk.Y, padx=20, pady=20)
+
+source_label = tk.Label(control_frame, text="Source:")
+source_label.pack(anchor="w")
+
+source_entry = tk.Entry(control_frame)
+source_entry.pack(anchor="w")
+
+destination_label = tk.Label(control_frame, text="Destination:")
+destination_label.pack(anchor="w")
+
+destination_entry = tk.Entry(control_frame)
+destination_entry.pack(anchor="w")
+
+find_button = tk.Button(control_frame, text="Find Shortest Path", command=handle_find_path)
+find_button.pack(anchor="w", pady=10)
+
+result_label = tk.Label(control_frame, text="")
+result_label.pack(anchor="w")
+
