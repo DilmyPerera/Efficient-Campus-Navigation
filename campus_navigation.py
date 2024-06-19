@@ -1,12 +1,8 @@
 import tkinter as tk
 import heapq
 import math  #For calculating positions on the canvas
+
 from PIL import Image, ImageTk
-
-
-
-
-
 
 def find_shortest_path(campus_map, source, destination):
     # Dijkstra's algorithm to find the shortest path
@@ -193,4 +189,18 @@ find_button.pack(anchor="w", pady=10)
 
 result_label = tk.Label(control_frame, text="")
 result_label.pack(anchor="w")
+
+# Create a canvas for drawing the map
+canvas = tk.Canvas(root, width=1000, height=800)
+canvas.pack(side=tk.RIGHT, expand=True, fill=tk.BOTH, padx=20, pady=20)
+
+# Load the image and resize it to fit the canvas
+image = Image.open('Uni Map_Updated.png')
+canvas_width = 1000
+canvas_height = 600
+image = image.resize((canvas_width, canvas_height), Image.LANCZOS)
+image = ImageTk.PhotoImage(image)
+
+# Draw the initial map with the image background
+draw_map([])
 
