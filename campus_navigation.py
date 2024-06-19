@@ -159,7 +159,7 @@ def draw_map(shortest_path):
         else:
             # Regular buildings
             canvas.create_oval(x - 1, y - 1, x + 1, y + 1, fill="black", outline="black")
-            canvas.create_text(x, y - 15, text=building, font=("Arial", 7), fill="white")    
+            canvas.create_text(x, y - 15, text=building, font=("Arial", 7),fill="white")
             
 
 root = tk.Tk()
