@@ -2,6 +2,8 @@ import heapq
 
 
 
+
+
 def find_shortest_path(campus_map, source, destination):
     # Dijkstra's algorithm to find the shortest path
     priority_queue = [(0, source)]
@@ -87,6 +89,25 @@ campus_map = {
     "TP22": {"FBS MB": 126, "CP1": 34, "DOE": 32, "x": 674, "y": 447},
     "DOE": {"TP22": 32, "x": 674, "y": 415},
     "TP23": {"FAS CANTEEN": 100, "LH": 107, "x": 600, "y": 160},
-    "FAS CANTEEN": {"TP5": 108, "TP23": 100, "x": 600, "y": 260},
-
+    "FAS CANTEEN": {"TP5": 108, "TP23": 100, "x": 600, "y":260}
 }
+
+
+# Tkinter GUI implementation
+def handle_find_path():
+    source = source_entry.get()
+    destination = destination_entry.get()
+
+    if source not in campus_map or destination not in campus_map:
+        result_label.config(text="Invalid source or destination. \nPlease try again.")
+        return
+
+    shortest_path, distance = find_shortest_path(campus_map, source, destination)
+
+    if shortest_path:
+        path_text = " \n↓\n ".join(shortest_path)
+        result_label.config(text=f"Shortest Path: \n{path_text} \n(Distance: {distance} meters)")
+        draw_map(shortest_path)
+    else:
+        result_label.config(text="No path found between these buildings.")
+        draw_map([])
