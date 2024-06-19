@@ -147,4 +147,16 @@ def draw_map(shortest_path):
             angle = math.atan2(y2 - y1, x2 - x1)
             offset_x = 10 * math.sin(angle)
             offset_y = 10 * math.cos(angle)
-            #canvas.create_text(mid_x + offset_x, mid_y - offset_y, text=str(distance), font=("Arial", 8), fill="red")        
+            #canvas.create_text(mid_x + offset_x, mid_y - offset_y, text=str(distance), font=("Arial", 8), fill="red")
+
+    # Draw buildings as dots with labels
+    for building, data in campus_map.items():
+        x, y = data['x'], data['y']
+        if building in shortest_path:
+            # Highlight buildings in the shortest path
+            canvas.create_oval(x - 1, y - 1, x + 1, y + 1, fill="red", outline="red")
+            canvas.create_text(x, y, text=building, font=("Arial", 8, "bold"), fill="white")
+        else:
+            # Regular buildings
+            canvas.create_oval(x - 1, y - 1, x + 1, y + 1, fill="black", outline="black")
+            canvas.create_text(x, y - 15, text=building, font=("Arial", 7), fill="white")        
